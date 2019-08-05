@@ -38,7 +38,7 @@ sudo systemctl start jenkins
 
 ###Create Firewall Rule to Allow Jenkins Traffic
 
-Allow traffic from all soruce to tcp port 8080
+###Allow traffic from all soruce to tcp port 8080
 
 
 gcloud compute firewall-rules create jenkins \
