@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # filename: install_helm.sh
 ### Install Helm

@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 #Installing Jenkins server
 
 ## Install Java

@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # Create monitoring namespace
 sudo kubectl create namespace monitoring

@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #filename: create_ns_monitoring.sh
 gcloud login
