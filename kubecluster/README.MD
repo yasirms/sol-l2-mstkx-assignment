@@ -347,3 +347,18 @@ Run app_with_helm.sh script on kubernetes master server to install helm
 ./app_with_helm.sh
 '''
 
+#### Creating monitoring namespace in the Kubernetes Cluster
+
+Run create_ns_monitoring.sh script on kubernetes master server to install helm
+
+'''console
+./create_ns_monitoring.sh
+'''
+
+#### 
+
+
+
+
+
+

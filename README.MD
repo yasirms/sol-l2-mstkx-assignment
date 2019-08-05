@@ -71,6 +71,9 @@ Create a dashboard using Grafana to help visualize the Node/Container/API Server
 
 Solution
 --------
+
+Below dashboards can be installed using GUI of the grafana to achieve the desired results:
+
 https://grafana.com/grafana/dashboards/7082
 https://grafana.com/grafana/dashboards/1471
 
@@ -92,11 +95,11 @@ Demonstrate Blue/Green and Canary deployment for the application (For e.g. Chang
 
 Solution
 --------
-I had previosuly built a Canary deployment for another assignment. Pleaae
+I had previosuly built a Canary deployment for another assignment. Please check below repo that I had created previously:
 
+https://github.com/yasirms/kpn
 
-
-## Task 12: 
+### Task 12: 
 Write a wrapper script (or automation mechanism of your choice) which does all the steps above.
 
 Solution
@@ -105,7 +108,7 @@ It need more time to complete this task. I am working on it.
 
 
 
-## Task 13: 
+### Task 13: 
 Document the whole process in a README file at the root of your repo. Mention any pre-requisites in the README
 
 Solution
