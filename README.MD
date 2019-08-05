@@ -59,9 +59,7 @@ https://github.com/mjhea0/efk-kubernetes
 ## Task 11: Demonstrate Blue/Green and Canary deployment for the application (For e.g. Change the background color or font in the new version etc.,)
 
  
-I had previosuly built a Canary deployment for another assignment. Please check my work here: 
-
-https://github.com/yasirms/kpn
+I had previosuly built a Canary deployment for another assignment. Pleaae
 
 
 
