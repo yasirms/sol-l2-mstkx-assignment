@@ -1,3 +1,5 @@
+!#/bin/bash
+
 kubectl create namespace logging
 
 # Install Elastic Search
