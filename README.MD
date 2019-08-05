@@ -17,7 +17,7 @@ The README file ./kubecluster/README.MD describes steps in detail on how the clu
 Create a CI/CD pipeline using Jenkins (or a CI tool of your choice) outside Kubernetes cluster (not as a pod inside Kubernetes cluster).
 
 Solution
-=======
+--------
 The README file inside ./jenkins/ folder describes the process to implement to jenkins server and CI/CD Pipeline
 
 
@@ -25,7 +25,7 @@ The README file inside ./jenkins/ folder describes the process to implement to j
 Create a development namespace
 
 Solution
-=======
+--------
 The script ./kubcluster/create_ns_development.sh does the job.
 
 
@@ -33,14 +33,14 @@ The script ./kubcluster/create_ns_development.sh does the job.
 Deploy guest-book application in the development Namespcae
 
 Solution
-=======
+--------
 The scipt ./kubcluster/install_guestbook.sh does the job
 
 ## Task 5: 
 Install and Configure Helm in the Cluster
 
 Solution
-=======
+--------
 The script ./kubecluster/install_helm.sh does the job.
 
 
@@ -48,14 +48,14 @@ The script ./kubecluster/install_helm.sh does the job.
 Use Helm to deploy the application on Kubernetes Cluster from CI server
 
 Solution
-=======
+--------
 The script ./kubecluster/app_with_helm.sh does the job
 
 ## Task 7: 
 Create a monitoring namespace in the cluster
 
 Solution
-=======
+--------
 The script ./kubecluster/create_ns_monitoring.sh does the job
 
 
@@ -63,7 +63,7 @@ The script ./kubecluster/create_ns_monitoring.sh does the job
 Setup Prometheus (in monitoring namespace) for gathering host/container metrics along with health check status of the application.
 
 Solution
-=======
+--------
 The script ./monitoring/prometheus/install_prometheus.sh does the job
 
 
@@ -71,7 +71,7 @@ The script ./monitoring/prometheus/install_prometheus.sh does the job
 Create a dashboard using Grafana to help visualize the Node/Container/API Server etc. metrices from Prometheus server. Optionally create a custom dashboard on Grafana
 
 Solution
-=======
+--------
 https://grafana.com/grafana/dashboards/7082
 https://grafana.com/grafana/dashboards/1471
 
@@ -80,7 +80,7 @@ https://grafana.com/grafana/dashboards/1471
 Setup log analysis using Elasticsearch, Fluentd (or Filebeat), Kibana.
 
 Solution
-=======
+--------
 Check out the script at ./monitoring/elastic/install_elastic.sh. Please note that this installation has sourced YAML files from below git repo:
 
 https://github.com/mjhea0/efk-kubernetes
@@ -92,7 +92,7 @@ Demonstrate Blue/Green and Canary deployment for the application (For e.g. Chang
 
 
 Solution
-======= 
+--------
 I had previosuly built a Canary deployment for another assignment. Pleaae
 
 
@@ -101,7 +101,7 @@ I had previosuly built a Canary deployment for another assignment. Pleaae
 Write a wrapper script (or automation mechanism of your choice) which does all the steps above.
 
 Solution
-=======
+--------
 It need more time to complete this task. I am working on it.
 
 
@@ -109,7 +109,7 @@ It need more time to complete this task. I am working on it.
 ## Task 13: 
 Document the whole process in a README file at the root of your repo. Mention any pre-requisites in the README
 
-
-
+Solution
+--------
 
 
