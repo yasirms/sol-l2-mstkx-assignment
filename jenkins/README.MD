@@ -1,6 +1,6 @@
 #Installing Jenkins server
 
-## Install Java
+#### Install Java
 '''console
 sudo apt-get install default-jre
 '''
