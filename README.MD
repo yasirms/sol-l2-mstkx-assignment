@@ -10,7 +10,7 @@ The solution for each task has been created using multiple file. This file will 
 Create a Highly available Kubernetes cluster manually using Google Compute Engines (GCE).
 
 Solution
-=======
+--------
 The README file ./kubecluster/README.MD describes steps in detail on how the cluster has been setup.
 
 ### Task 2: 
