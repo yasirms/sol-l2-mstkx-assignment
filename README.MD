@@ -13,54 +13,55 @@ The README file ./kubecluster/README.MD describes steps in detail on how the clu
 The README file inside ./jenkins/ folder describes the process to implement to jenkins server and CI/CD Pipeline
 
 
-
-
 ## Task 3: Create a development namespace
 
-
+The script ./kubcluster/create_ns_development.sh does the job.
 
 
 ## Task 4 : Deploy guest-book application in the development Namespcae
 
-
+The scipt ./kubcluster/install_guestbook.sh does the job
 
 ## Task 5: Install and Configure Helm in the Cluster
 
-
+The script ./kubecluster/install_helm.sh does the job.
 
 
 ## Task 6: Use Helm to deploy the application on Kubernetes Cluster from CI server
 
-
-
-
+The script ./kubecluster/app_with_helm.sh does the job
 
 ## Task 7: Create a monitoring namespace in the cluster
 
-
+The script ./kubecluster/create_ns_monitoring.sh does the job
 
 
 ## Task 8: Setup Prometheus (in monitoring namespace) for gathering host/container metrics along with health check status of the application.
 
-
-
+The script ./monitoring/prometheus/install_prometheus.sh does the job
 
 
 ## Task 9: Create a dashboard using Grafana to help visualize the Node/Container/API Server etc. metrices from Prometheus server. Optionally create a custom dashboard on Grafana
 
 
+https://grafana.com/grafana/dashboards/7082
+https://grafana.com/grafana/dashboards/1471
 
 
 ## Task 10: Setup log analysis using Elasticsearch, Fluentd (or Filebeat), Kibana.
 
+Check out the script at ./monitoring/elastic/install_elastic.sh. Please note that this installation has sourced YAML files from below git repo:
 
+https://github.com/mjhea0/efk-kubernetes
 
 
 
 ## Task 11: Demonstrate Blue/Green and Canary deployment for the application (For e.g. Change the background color or font in the new version etc.,)
 
+ 
+I had previosuly built a Canary deployment for another assignment. Please check my work here: 
 
-
+https://github.com/yasirms/kpn
 
 
 
