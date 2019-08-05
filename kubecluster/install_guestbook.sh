@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 #Run below commands on Kubemaster  to create Development Namespace
 
 kubectl create namespace development

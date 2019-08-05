@@ -34,22 +34,21 @@ Deploy guest-book application in the development Namespcae
 
 Solution
 --------
-The scipt ./kubcluster/install_guestbook.sh does the job
+The scipt ./kubcluster/install_guestbook.sh does the job. The ./kubecluster/README file describes the installation process.
 
 ## Task 5: 
 Install and Configure Helm in the Cluster
 
 Solution
 --------
-The script ./kubecluster/install_helm.sh does the job.
-
+The script ./kubecluster/install_helm.sh does the job. The ./kubecluster/README file describes the installation process.
 
 ## Task 6: 
 Use Helm to deploy the application on Kubernetes Cluster from CI server
 
 Solution
 --------
-The script ./kubecluster/app_with_helm.sh does the job
+The script ./kubecluster/app_with_helm.sh does the job. The ./kubecluster/README file describes the installation process.
 
 ## Task 7: 
 Create a monitoring namespace in the cluster

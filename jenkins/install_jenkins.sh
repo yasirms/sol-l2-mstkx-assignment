@@ -25,9 +25,9 @@ sudo apt-get update
 
 sudo apt-get install jenkins
 
-Now that Jenkins and its dependencies are in place, we'll start the Jenkins server.
+#Now that Jenkins and its dependencies are in place, we'll start the Jenkins server.
 
-Using systemctl we'll start Jenkins:
+#Using systemctl we'll start Jenkins:
 
 
 sudo systemctl start jenkins

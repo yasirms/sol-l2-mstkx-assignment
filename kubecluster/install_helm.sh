@@ -10,3 +10,7 @@ sudo ./get_helm.sh
 ### Install and initialize Tiller
 
 sudo helm init 
+
+# Install an app in Kubernetes Cluster with helm
+
+sudo helm install --name consul-app stable/consul

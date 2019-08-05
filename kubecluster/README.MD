@@ -1,6 +1,6 @@
-# This README File lists down steps to setup Kubenertes Cluster and the configurations that need to be done.
+This README File lists down steps to setup Kubenertes Cluster and the configurations that need to be done.
 
-# The Cluster configuration
+## The Cluster configuration
 
 The cluster for this excercise has below hardware setup:
  3x Master nodes - each node having 2 CPUs, 7.5GB RAM and 10 GB Disk space.
@@ -21,54 +21,23 @@ Each worker node will have below hardware configuration setup
 Every node of the cluster is running Ubuntu 19.04.
 
 
-Step 2 -  Setup Master Kubernetes Servers
+##Setting up Kubernetes Cluster
 
-# Execute below commands on all 3 master nodes
+#### Executure Pre-installation scripts on all master and worker nodes
 
-# Update Kubernetes Master nodes:
+Run below script on all master nodes
+./master_pre.sh
 
-'''console
-sudo apt-get update
-sudo apt-get install -y apt-transport-https curl
-sudo cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-deb https://apt.kubernetes.io/ kubernetes-xenial main
-EOF
+Run below script on all worker nodes
+./worker_pre.sh
 
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-'''
-
-###Change to root user to add keys for <>
+#### Install niginx to act as load balancer on the nodes
 
 '''console
-su passwd
-su root
+sudo apt install niginx
 '''
 
-### Turn off Swap
-'''console
-swapoff -a
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-'''
-
-Exit out of root user
-
-'''console
-exit
-'''
-#update the system
-
-'''console
-sudo apt-get update
-sudo apt-get install
-sudo apt-get install docker
-####Or 
-sudo apt install docker.io
-'''
-
-# Install niginx to act as load balancer on the nodes
-
-# Add below configuration to the /etc/nginx/config file
+#### Add below configuration to the /etc/nginx/config file
 
 '''console
 /etc/nginx/nginx.conf 
@@ -153,8 +122,8 @@ t text/xml application/xml application/xml+rss text/javascript;
         include /etc/nginx/sites-enabled/*;
 }
 
-
-#mail {
+# mail
+ {
 #       # See sample authentication script at:
 #       # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
 # 
@@ -173,14 +142,15 @@ t text/xml application/xml application/xml+rss text/javascript;
 #               protocol   imap;
 #               proxy      on;
 #       }
-#}
+#
+}
 
 '''
 
 
-# Reload nginx configuration
+#### Reload nginx configuration
 
-# check that nginx is running correctly
+#### Verify that nginx is running correctly
 
 '''console
 yasirms_al@kubemaster1:~$ curl 10.128.0.8
@@ -212,9 +182,9 @@ Commercial support is available at
 '''
 
 
-## Initialize The Kube Cluster
+#### Initialize The Kube Cluster
 
-### run below command on the one of the Kubemaster server to initialize the Kubernetes cluster:
+Run below command on the one of the Kubemaster server to initialize the Kubernetes cluster:
 
 '''console
 
@@ -222,7 +192,7 @@ sudo kubeadm init \
 --config=/etc/kubernetes/kubeadm/kubeadm-config.yaml --experimental-upload-certs
 '''
 
-Here is the sample output
+##### Here is the sample output
 
 '''console
 Flag --experimental-upload-certs has been deprecated, use --upload-certs instead
@@ -305,48 +275,27 @@ Then you can join any number of worker nodes by running the following on each as
 kubeadm join 10.128.0.8:6443 --token pgwl7n.nd15qpef7sizc9wz \
     --discovery-token-ca-cert-hash sha256:e261e907ea9d4c222cd3fb53bb95786894e9b1735cde9074d3812b04024c502d 
 
-'''
+Note down the strings that need to be used to join Master kubernetes server as Master and as worker node. In the example above below are the two commands to join the cluster
 
-#Note down the strings that need to be used to join Master kubernetes server as Master and as worker node. In the example above below are the two commands to join the cluster
+#### Join remaining master servers to the cluster
+
+ Run the below commands on primary master node, as instructed in the output of the kubeadm init
 
 '''console
-
-
-You can now join any number of the control-plane node running the following command on each as root:
-
-  kubeadm join 10.128.0.8:6443 --token pgwl7n.nd15qpef7sizc9wz \
-    --discovery-token-ca-cert-hash sha256:e261e907ea9d4c222cd3fb53bb95786894e9b1735cde9074d3812b04024c502d \
-    --control-plane --certificate-key 4cea22cf50d89201ae4d4e351d7bebe1d0a06ca8661182adf9782e0998ff9a84
-
-'''
-
-Run the above command both other remaining master nodes to join the cluster.
-
-Run the below commands, as instructed in the output of the kubeadm init
-
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-
-##Below is the joining command to join cluster as worker node
-
-
-'''console
-
-
-Then you can join any number of worker nodes by running the following on each as root:
-
-kubeadm join 10.128.0.8:6443 --token pgwl7n.nd15qpef7sizc9wz \
-    --discovery-token-ca-cert-hash sha256:e261e907ea9d4c222cd3fb53bb95786894e9b1735cde9074d3812b04024c502d 
-
 '''
 
+ Run the below command both other remaining master nodes to join the cluster. Please note that this string is specific to your setup. It is provided by the output of kubeadm init command in the above step.
 
-##Run the above command on the worker nodes to join the cluster
+'''console
+  kubeadm join 10.128.0.8:6443 --token pgwl7n.nd15qpef7sizc9wz \
+    --discovery-token-ca-cert-hash sha256:e261e907ea9d4c222cd3fb53bb95786894e9b1735cde9074d3812b04024c502d \
+    --control-plane --certificate-key 4cea22cf50d89201ae4d4e351d7bebe1d0a06ca8661182adf9782e0998ff9a84
+'''
 
-
-##Confirm that remaining master nodes have joined the cluster
+#### Confirm that remaining master nodes have joined the cluster
 
 '''console
 yasirms_al@kubemaster1:~$ sudo kubectl get nodes
@@ -354,15 +303,18 @@ NAME          STATUS   ROLES    AGE    VERSION
 kubemaster1   Ready    master   32m    v1.15.1
 kubemaster2   Ready    master   28s    v1.15.1
 kubemaster3   Ready    master   116s   v1.15.1
-'''
 
-###Initiate the Work nodes and join the cluster
+#### Join worker nodes with the cluster
+
+Run below command on the all worker nodes which need to join the cluster. Please note that this string is specific to your setup.
+
 '''console
 kubeadm join 10.128.0.8:6443 --token pgwl7n.nd15qpef7sizc9wz \
-    --discovery-token-ca-cert-hash sha256:e261e907ea9d4c222cd3fb53bb95786894e9b1735cde9074d3812b04024c502d
+    --discovery-token-ca-cert-hash sha256:e261e907ea9d4c222cd3fb53bb95786894e9b1735cde9074d3812b04024c502d 
+
 '''
 
-###Check the workernode has joined the cluster
+#### Check the workernode has joined the cluster
 
 '''console
 yasirms_al@kubemaster1:~$ sudo kubectl get nodes
@@ -374,13 +326,24 @@ workernode1   Ready    <none>   67s   v1.15.1
 workernode2   Ready    <none>   37s   v1.15.1
 workernode3   Ready    <none>   17s   v1.15.1
 '''
+#### Create development namespace and Install Guestbook on Cluster
 
+Run install_guestbook.sh script on kubernetes cluster to install guestbook App on the cluster. This script also create 'development' namespace.
 
+./install_guestbook.sh
 
+#### Install Helm on Cluster
 
+Run install_helm.sh script on kubernetes cluster to install helm
+'''console
+./install_helm.sh
+'''
 
+#### Install Application using Helm
 
+Run app_with_helm.sh script on kubernetes master server to install helm
 
-
-
+'''console
+./app_with_helm.sh
+'''
 
